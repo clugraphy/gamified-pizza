@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+main {
+  margin-top: auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.form-group {
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.container-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.container-menu card {
+  flex-grow: 1;
+  margin: 20px;
+}
+
+footer {
+  clear: both;
+  position: sticky;
+  bottom: 50;
+  width: 100%;
+  height: 200%;
+  line-height: 180px;
+  background-color: rgb(228, 196, 15);
+  color: chartreuse;
+  text-align: center;
+}
+
+.navBar {
+  margin: auto 0;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-color: #dbc544;
+	font-size: 0;
+}
+
+.navBar a {
+  line-height: 40px;
+	height: 100%;
+	font-size: 18px;
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: justify;
+	color: red;
+	cursor: pointer;
+  
+}
+
+.navBar .animation {
+  position: absolute;
+	height: 100%;
+	top: 0;
+	z-index: 0;
+	transition: all .5s ease 0s;
+}
+
+a:nth-child(1) {
+	width: 100px;
+}
+a:nth-child(2) {
+	width: 110px;
+}
+a:nth-child(3) {
+	width: 100px;
+}
+a:nth-child(4) {
+	width: 160px;
+}
+a:nth-child(5) {
+	width: 120px;
+}
+
+.navBar .start-home, a:nth-child(1):hover~.animation {
+	width: 100px;
+	left: 0;
+	background-color: #1abc9c;
+}
+.navBar .start-about, a:nth-child(2):hover~.animation {
+	width: 110px;
+	left: 100px;
+	background-color: #e74c3c;
+}
+.navBar .start-blog, a:nth-child(3):hover~.animation {
+	width: 100px;
+	left: 210px;
+	background-color: #3498db;
+}
+.navBar .start-portefolio, a:nth-child(4):hover~.animation {
+	width: 160px;
+	left: 310px;
+	background-color: #9b59b6;
+}
+.navBar .start-contact, a:nth-child(5):hover~.animation {
+	width: 120px;
+	left: 470px;
+	background-color: #e67e22;
+}
+
+a {
+  font-size: 22px;
+  color: #777;
+  text-decoration: none;
+  transition: all 0.45s;
+}
+
+.bigicon {
+  color: white;
+}
+
+.mix {
+  min-height: 370px;
+}

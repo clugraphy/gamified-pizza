@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    
+<body class="text-center">
+        
+    <main class="form-signin">
+    
+         <form method="post" action="{% url 'login' %}">
+           {% csrf_token %}
+
+            <img class="mb-4" src="img/default.jpg" alt="" width="72" height="57">
+            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+            <div class="form-floating">
+            <input type="username" class="form-control" id="floatingInput" placeholder="Username">
+            <label for="username">{{ form.username.label_tag }}</label>
+             {{ form.username }}
+            </div>
+            <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="password">{{ form.password.label_tag }}</label>
+             {{ form.password }}
+            </div>
+        
+            
+
+            <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+            <p class="mt-5 mb-3 text-muted">&copy; cLu Pizza Tech 2021</p>
+        </form>
+    </main>
+
+
+        
+</body>
+   
+
+
+{% endblock %}
+
+{% comment %} <h1>Login</h1>
+
+    {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+            <p>Your account doesn't have access to this page. To proceed,
+                please login with an account that has access.</p>
+        {% else %}
+            <p>Please login to see this page.</p>
+        {% endif %}
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="username">{{ form.username.label_tag }}</label>
+            {#            <input type="text" class="form-control" id="username" name="username" aria-describedby="usernameHelp"#}
+            {#                   required/>#}
+            {{ form.username }}
+        </div>
+        <div class="form-group">
+            <label for="password">{{ form.password.label_tag }}</label>
+            {#            <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp"#}
+            {#                   required/>#}
+            {{ form.password }}
+        </div>
+
+        {#        <div>#}
+        {#            <td>{{ form.username.label_tag }}</td>#}
+        {#            <td>{{ form.username }}</td>#}
+        {#        </div>#}
+        {#        <div>#}
+        {#            <td>{{ form.password.label_tag }}</td>#}
+        {#            <td>{{ form.password }}</td>#}
+        {#        </div>#}
+
+        <div>
+            <button type="submit" name="submitButton" class="btn btn-primary">Login</button>
+
+            <input type="hidden" name="next" value="{{ next }}"/>
+        </div>
+    </form>
+
+    {# Assumes you setup the password_reset view in your URLconf #}
+    <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+
+    {#    {% if message %}#}
+    {#        <div>#}
+    {#            {{ message }}#}
+    {#        </div>#}
+    {#    {% endif %}#}
+    {##}
+    {#    <form action="{% url 'login' %}" method="post">#}
+    {#        {% csrf_token %}#}
+    {##}
+    {#        <div class="form-group">#}
+    {#            <label for="username">Username</label>#}
+    {#            <input type="text" class="form-control" id="username" name="username" aria-describedby="usernameHelp"#}
+    {#                   required/>#}
+    {#        </div>#}
+    {#        <div class="form-group">#}
+    {#            <label for="password">Password</label>#}
+    {#            <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp"#}
+    {#                   required/>#}
+    {#        </div>#}
+    {##}
+    {#        <button type="submit" name="" class="btn btn-primary">Login</button>#}
+    {#    </form>#}  {% endcomment %}

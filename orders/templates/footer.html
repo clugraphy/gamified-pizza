@@ -1,0 +1,39 @@
+<footer class="footer">
+    <div class="container-fluid mt-6 mb-3" style="background-color:yellow">
+        <div class="row">
+            <div class="col">
+                {% if user.is_authenticated %}
+                    <center><a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                {% endif %}
+            </div>          
+            <div class="col" style="">
+            <h1>Footer Row 1 Col 2</h2>
+            </div>
+            <div class="col" style="">
+            <h1>Footer Row 1 Col 3</h2>
+            </div>
+        </div> <!--First row-->
+        <div class="row">
+            <div class="col">
+            <h1>Footer Row 2 Col 1</h2>
+            </div>
+            <div class="col">
+            <h1>Footer Row 2 Col 2</h2>
+            </div>
+            <div class="col">
+            <h1>Footer Row 2 Col 3</h2>
+            </div>
+        </div><!--Second row-->
+        <div class="row">
+            <div class="col">
+            <h1>Footer Row 3 Col 1</h2>
+            </div>
+            <div class="col">
+            <h1>Footer Row 3 Col 2</h2>
+            </div>
+            <div class="col">
+            <h1>Footer Row 3 Col 3</h2>
+            </div>
+        </div><!--Third row-->   
+    </div><!--Container-->
+</footer>
