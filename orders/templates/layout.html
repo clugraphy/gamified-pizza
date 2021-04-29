@@ -20,13 +20,14 @@
 </head>
 
 <body>
-{% include "navbar.html" %}
 
-<main class="container-fluid">
+
+<main class="products">
 
     {% block content %}
     <h1>Helloo here is the messaGE</h1>
     {% endblock %}
+    {% include "navbar.html" %}
 </main>
 
 {% include "footer.html" %}

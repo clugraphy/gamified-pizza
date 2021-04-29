@@ -1,7 +1,7 @@
 {% load static %}
 
-<nav class="navbar navbar-dark navbar-fixed-top navbar-expand-md bg-dark justify-content-center">
-    <a href="/" class="navbar-brand mr-0">cLu's Pizza Tech</a>
+{% comment %} <nav class="navbar navbar-dark navbar-fixed-top navbar-expand-md bg-dark justify-content-center"> {% endcomment %}
+    {% comment %} <a href="/" class="navbar-brand mr-0">cLu's Pizza Tech</a>
     <button class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#collapsingNavbar2">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -43,5 +43,28 @@
                 </li>
             {% endif %}
         </ul>
-    </div>
-</nav>
+    </div> {% endcomment %}
+    <input type="checkbox" id="myInput">
+        <label for="myInput">
+        <span class="bar top"></span>
+        <span class="bar middle"></span>
+        <span class="bar bottom"></span>
+        </label>
+    <aside>
+        <div class="aside-section aside-left">
+        <div class="aside-content">
+            <p> Pizza Leaderboard </p>
+            <button class="button"> CTA </button>
+        </div>
+        </div>
+        <div class="aside-section aside-right">
+        <ul class="aside-list">
+            <li><a href="{% url "product_list" %}" class="aside-anchor">All</a></li>
+            {% for c in categories %}
+                {% if category.slug == c.slug %} {% endif %}>
+                <li><a href="{{ c.get_absolute_url }}" class="aside-anchor">{{ c.name }}</a></li>
+            {% endfor %}
+        </ul>
+        </div>
+    </aside>
+{% comment %} </nav> {% endcomment %}

@@ -10,20 +10,13 @@
     <div class="row" style="margin-bottom: 6%">
 
         <div class="col-sm-12">
-        <div class = "navBar">
-	        <a href="#">Home</a>
-	        <a href="#">About</a>
-	        <a href="#">Blog</a>
-	        <a href="#">Portofolio</a>
-	        <a href="#">Contact</a>
-	        <div class="animation start-home"></div>
-        </div>
+            <div class = "healthBar">
+                <p>This is my health bar , here i will insert icons that represents hunger </p>
+            </div>
         </div>
 
-        <div class="col-sm-8 blog-main">
-
+        <div class="col-sm-12 blog-main">
             <div class="blog-post">
-    
                 <div class="row">
 
                     {% for p in products %}
@@ -44,7 +37,7 @@
                                     <p class="text-center">
                                         $ {{ p.price }}
                                     </p>
-
+                                    <p>Add to cart{{ cart.get_total_price }}</p>
                                 </div>
 
                             </div>
@@ -56,32 +49,6 @@
             </div> <!-- post -->
 
         </div> <!-- main -->
-
-    
-
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-
-            <div class="sidebar-module">
-
-                <h4>Categories</h4>
-
-                <ol class="list-unstyled">
-
-                    <li {% if not category %} class="active" {% endif %}>
-                        <a href="{% url "product_list" %}">All</a>
-                    </li>
-
-                    {% for c in categories %}
-                        <li {% if category.slug == c.slug %} class="active" {% endif %}>
-                            <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
-                        </li>
-                    {% endfor %}
-
-                </ol>
-
-            </div> <!-- sidebar -->
-
-        </div> <!-- row -->
 
     </div> <!-- container -->
 
