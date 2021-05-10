@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('fonts/PixelOperator.ttf');
+@import url('fonts/PixelOperator-Bold.ttf');
+@import url('fonts/PixelOperator8.ttf');
+@import url('fonts/PixelOperator8-Bold.ttf');
 
 body {
 	font-family: "Montserrat", sans-serif;
@@ -36,6 +40,7 @@ main {
 	position: inherit;
 	color: yellow;
 	background-color: aquamarine;
+	padding-left: 40px;
 	
 }
 

@@ -27,19 +27,31 @@
                                     <img src="{% if p.image %} {{ p.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}"
                                          alt="..." style="height: 130px; width: auto">
                                 </a>
-
+                            
                                 <div class="caption">
                                     <h3 class="text-center">
-                                       {{ p.name }}
+                                    {{ p.name }}
                                         <a href="{{ p.get_absolute_url }}"></a>
                                     </h3>
-
                                     <p class="text-center">
                                         $ {{ p.price }}
                                     </p>
-                                    <p>Add to cart{{ cart.get_total_price }}</p>
+                                    <p class="text-center">
+                                        {% csrf_token %}
+                                        {{ cart_product_form }}
+                                        <input type="submit" value="ADD TO CART" class="btn btn-primary">
+                                    
+                                    </p>
+                                    
+                                    {% comment %} <div>
+                                    <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                    {% csrf_token %}
+                                    {{ cart_product_form }}
+                                    <input type="submit" value="ADD TO CART" class="btn btn-primary">
+                                    </form>
+                                    </div> {% endcomment %}
                                 </div>
-
+                          
                             </div>
                         </div>
 
