@@ -34,6 +34,7 @@ class Product(models.Model):
     description = models.TextField(blank=True)
     # size = models.CharField(max_length=10, choices=SIZE_CHOICES)
     price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    pizzereum = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     available = models.BooleanField(default=True)
     stock = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -45,7 +46,7 @@ class Product(models.Model):
         index_together = (('id', "slug"),)
 
     def __self__(self):
-        return f"({self.id}) {self.name} ${self.price} - {self.category}"
+        return f"({self.id}) {self.name} ${self.price} - {self.category} {self.pizzereum}"
 
     def get_absolute_url(self):
         return reverse('product_detail', args=[self.id, self.slug])

@@ -44,7 +44,7 @@
         <div class="cart-area">           
             <a href="{% url "cart:cart_detail" %}" class="icons-btn d-inline-block bag">
             <i class="fa fa-shopping-cart fa-lg"></i>
-            <span class="cart-label"> {{ cart|length }} Items {{ cart.get_total_price }} RON</span>
+            <span class="cart-label"> {{ cart|length }} Items {{ cart.get_total_price }} RON {{ cart.get_total_pizzereum }} PZM</span>
             </a> 
         </div>
     </div>

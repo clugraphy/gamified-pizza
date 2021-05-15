@@ -10,12 +10,12 @@
 
     <div class="row" style="margin-top: 6%">
         <h2>Your Shopping Cart
-            <span class="badge pull-right">
-                {% with totail_items=cart|length %}
+            <span class="badge pull-right" style="color: #66ef5a">
+                {% with total_items=cart|length %}
                     {% if cart|length > 0 %}
                         My Shopping Order:
-                        <a href="{% url "cart:cart_detail" %}" style="color: #ffffff">
-                            {{ totail_items }} item {{ totail_items|pluralize }}, $ {{ cart.get_total_price }}
+                        <a href="{% url "cart:cart_detail" %}" style="color: #66ef5a">
+                            {{ total_items }} item {{ total_items|pluralize }}, $ {{ cart.get_total_price }} , {{ cart.get_total_pizzereum }} PZM
                         </a>
                     {% else %}
                         Your cart is empty.
@@ -33,6 +33,7 @@
                 <th>Remove</th>
                 <th>Unit Price</th>
                 <th>Price</th>
+                <th>Pizzereum</th>
             </tr>
             </thead>
             <tbody>
@@ -58,14 +59,15 @@
                             <a href="{% url "cart:cart_remove" product.id %}">Remove</a>
                         </td>
                         <td>${{ item.price }}</td>
-                        <td>${{ item.total_price }}</td>
+                        <td>${{ item.total_price }} </td>
+                        <td>{{ item.total_pizzereum }} PZM</td>
                     </tr>
                 {% endwith %}
             {% endfor %}
             <tr style="background-color: #5AC8FA">
                 <td><b>Total</b></td>
-                <td colspan="4"></td>
-                <td colspan="num"><b>$ {{ cart.get_total_price }}</b></td>
+                <td colspan="5"></td>
+                <td colspan="num"><b>$ {{ cart.get_total_price }} and {{ cart.get_total_pizzereum }} PZM</b></td>
             </tr>
             </tbody>
         </table>
