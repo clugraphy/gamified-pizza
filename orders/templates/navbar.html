@@ -54,7 +54,18 @@
         <div class="aside-section aside-left">
         <div class="aside-content">
             <p> Pizza Leaderboard </p>
-            <button class="button"> CTA </button>
+            <p> #1 user.get_username </p>
+            <p> #2 user.get_username </p>
+            <p> #3 user.get_username </p>
+            <p> #4 user.get_username </p>
+            <p> #5 user.get_username </p>
+            <p> #6 user.get_username </p>
+            <p> #7 user.get_username </p>
+            <p> #8 user.get_username </p>
+            <p> #9 user.get_username </p>
+            <p> #10 user.get_username </p>
+
+            <button class="button"> HOW TO GET TO THE TOP </button>
         </div>
         </div>
         <div class="aside-section aside-right">
@@ -64,7 +75,20 @@
                 {% if category.slug == c.slug %} {% endif %}>
                 <li><a href="{{ c.get_absolute_url }}" class="aside-anchor">{{ c.name }}</a></li>
             {% endfor %}
+
+             <ul class="navbar-nav mx-auto text-center">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url "product_list" %}">Menu </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "product_list" %}">Products </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "product_list" %}">Contact </a>
+                    </li>
+                </ul>
         </ul>
         </div>
+ 
     </aside>
 {% comment %} </nav> {% endcomment %}

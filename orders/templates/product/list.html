@@ -3,59 +3,48 @@
 {% load static %}
 
 {% block title %}
-    {% if category %}{{ category.name }} {% else %} Menu {% endif %}
+    {% if category %}{{ category.name }} {% else %} Pizza Game {% endif %}
 {% endblock %}
 
 {% block content %}
+    
     <div class="row" style="margin-bottom: 6%">
-
-        <div class="col-sm-12">
-            <div class = "healthBar">
-                <p>This is my health bar , here i will insert icons that represents hunger </p>
-            </div>
-        </div>
+    
+      
+    
+   
+  
 
         <div class="col-sm-12 blog-main">
             <div class="blog-post">
-                <div class="row">
+                <div class="row" >
 
                     {% for p in products %}
 
-                        <div class="col-md-4">
-                            <div class="img-thumbnail">
+                        <div class="col-md-2" style="margin-bottom: 20px;">
+                            
+                            <div class="img-thumbnail" style ="border-radius: 50%">
                                 <a href="{{ p.get_absolute_url }}">
                                     <img src="{% if p.image %} {{ p.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}"
-                                         alt="..." style="height: 130px; width: auto">
+                                         alt="..." style="height: 130px; width: auto; border-radius: 50%;">
                                 </a>
                             
                                 <div class="caption">
                                     <h3 class="text-center">
-                                    {{ p.name }}
-                                        <a href="{{ p.get_absolute_url }}"></a>
+                                   
+                                        <a href="{{ p.get_absolute_url }}"> {{ p.name }}</a>
                                     </h3>
                                     <p class="text-center">
                                         $ {{ p.price }}
                                     </p>
-                                    <p class="text-center">
-                                        {% csrf_token %}
-                                        {{ cart_product_form }}
-                                        <input type="submit" value="ADD TO CART" class="btn btn-primary">
-                                    
-                                    </p>
-                                    
-                                    {% comment %} <div>
-                                    <form action="{% url "cart:cart_add" product.id %}" method="post">
-                                    {% csrf_token %}
-                                    {{ cart_product_form }}
-                                    <input type="submit" value="ADD TO CART" class="btn btn-primary">
-                                    </form>
-                                    </div> {% endcomment %}
+
+                                
                                 </div>
-                          
                             </div>
                         </div>
-
+                    
                     {% endfor %}
+
                 </div>
 
             </div> <!-- post -->
