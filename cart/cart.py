@@ -52,24 +52,25 @@ class Cart(object):
 
         for item in self.cart.values():
             item["price"] = Decimal(item["price"])
-            # item["pizzereum"] = Decimal(item["pizzereum"])
             item["total_price"] = item["price"] * item["quantity"]
-            # item["total_pizzereum"] = item["pizzereum"] * item["quantity"]
             yield item
 
         # for item in self.cart.values():
         #     item["pizzereum"] = Decimal(item["pizzereum"])
         #     item["total_pizzereum"] = item["pizzereum"] * item["quantity"]
+        #     yield item
 
     def __len__(self):
         return sum(item["quantity"] for item in self.cart.values())
 
+    # def get_total_pizzereum(self):
+    #     return sum(Decimal(item["quantity"]) * item["pizzereum"] for item in self.cart.values())
+
     def get_total_price(self):
         return sum(Decimal(item["price"]) * item["quantity"] for item in self.cart.values())
 
-    def get_total_pizzereum(self):
-        # return sum(Decimal(item["pizzereum"]) * item["quantity"] for item in self.cart.values())
-        pass
+    # def total_pizzereum(self):
+    #     return sum(Decimal(item["pizzereum"]) * item["quantity"] for item in self.cart.values())
 
     def clear(self):
         del self.session[settings.CART_SESSION_ID]

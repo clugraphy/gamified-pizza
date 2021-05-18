@@ -16,17 +16,16 @@
 
                     {% for p in products %}
 
-                        <div class="col-md-2" style="margin-bottom: 20px;">
+                        <div class="col-md-4" style="margin-bottom: 20px; margin-top: -200px">
                             
-                            <div class="img-thumbnail" style ="border-radius: 50%">
+                            {% comment %} <div class="img-thumbnail" style ="border-radius: 50%">
                                 <a href="{{ p.get_absolute_url }}">
                                     <img src="{% if p.image %} {{ p.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}"
-                                         alt="..." style="height: 130px; width: auto; border-radius: 50%;">
+                                         alt="..." style="height: 130px; width: auto; border-radius: 50%; ">
                                 </a>
-                            
+                                </div>
                                 <div class="caption">
                                     <h3 class="text-center">
-                                   
                                         <a href="{{ p.get_absolute_url }}"> {{ p.name }}</a>
                                     </h3>
                                     <p class="text-center">
@@ -35,10 +34,30 @@
                                     <p class="text-center">
                                         {{ p.pizzereum }} PZM
                                     </p>
-
-                                
                                 </div>
-                            </div>
+                            </div> {% endcomment %}
+
+                            <!-- New Card Style -->
+                            <a href="{{ p.get_absolute_url }}">
+                            <div class="card" style="width: 360px;height:480px;">
+                                <div class="img-thumbnail" style="display:flex; justify-content:center;margin-bottom: 40px">
+                                        <img src="{% if p.image %} {{ p.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}"
+                                            alt="..." style="height: 180px; width: auto;">
+                                </div>
+                                <div class="card-contents">        
+                                    
+                                        <h1>
+                                        {{ p.name }}
+                                        </h1>
+                                    <h1>
+                                        $ {{ p.price }}
+                                    </h1>
+                                    <h1>
+                                        {{ p.pizzereum }} PZM
+                                    </h1>
+                                    </div>
+                                </div> <!--  Card contents-->
+                            </a>
                         </div>
                     
                     {% endfor %}

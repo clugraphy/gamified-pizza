@@ -8,23 +8,21 @@
 
 {% block content %}
 
-    <div class="row" style="margin-top: 6%">
-
-        <div class="col-sm-12 blog-main ">
-
+    <div class="row">
+        <div class="col-sm-12 blog-main style="padding-top: 20px;">
             <div class="blog-post">
-                <div class="row">
+                <div class="row" style="margin-bottom: 120px;margin-top: -200px">
                     <div class="card">
                         <div class="card-body">
                             <div class="col-md-12 text-center">
                                 <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}"
-                                     alt="..." style="height: 170px; width: auto; border-radius: 50%;">
+                                    alt="..." style="height: 170px; width: auto; border-radius: 50%;">
                             </div>
                             <div class="col-md-12" style="padding-left: 20px">
                                 <h3>{{ product.name }}</h3>
-                                <h6><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h6>
-                                <p class="text-muted">${{ product.price }}</p>
-                                <p class="text-muted">PZM {{ product.pizzereum }}</p>
+                                <h4><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h4>
+                                <h2>${{ product.price }}</h2>
+                                <h2>PZM {{ product.pizzereum }}</h2>
                                 <form action="{% url "cart:cart_add" product.id %}" method="post">
                                     {% csrf_token %}
                                     {{ cart_product_form }}
@@ -32,12 +30,10 @@
                                 </form>
                                 <p>{{ product.description|safe|linebreaksbr }}</p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
+                        </div> <!-- card body -->
+                    </div> <!-- card -->
+                </div> <!-- anothe row -->
             </div><!-- /.blog-post -->
-
         </div><!-- /.blog-main -->
     </div><!-- /.row -->
 

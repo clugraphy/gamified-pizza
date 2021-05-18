@@ -26,34 +26,45 @@
   </head>
 
   <body>
+   <!--Adding the HealthBar & Cart Info-->
     <div id = "healthBar">  
         <div class="row"> 
-        <div>
-            <center><h2>100 <i class="fa fa-heart fa-lg" ></i></h2>
-        </div>
-        <div>
-            <center><h2>100 <i class="fa fa-money fa-lg" ></i></h2>
-        </div>
-        <a class="nav-link" href="{% url "product_list" %}">
-        <div>
-            <center><h2>Take me home <i class="fa fa-home fa-lg" ></i></h2>
-        </div>
-        </a>
+          <div class="col-sm-3">
+            <div>
+                <center><h2>100 <i class="fa fa-heart fa-lg" ></i></h2>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div>
+                <center><h2>100 <i class="fa fa-money fa-lg" ></i></h2>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <a class="nav-link" href="{% url "product_list" %}">
+            <div>
+                <center><h2>Take me home <i class="fa fa-home fa-lg" ></i></h2>
+            </div>
+            </a>
+          </div>
+          </div>
+        
     </div>
     <div class="col-sm-3">
         <div class="cart-area">           
             <a href="{% url "cart:cart_detail" %}" class="icons-btn d-inline-block bag">
             <i class="fa fa-shopping-cart fa-lg"></i>
-            <span class="cart-label"> {{ cart|length }} Items {{ cart.get_total_price }} RON {{ cart.get_total_pizzereum }} PZM</span>
+            <span class="cart-label"> {{ cart|length }} Items {{ cart.get_total_price }} RON  PZM</span>
             </a> 
         </div>
     </div>
           </div>  
-    <main id="products">
-      <navbar> {% include "navbar.html" %} </navbar>
+    <main>
+     <!--Adding the NavBar-->
+      {% include "navbar.html" %}
       {% block content %} {% endblock %}
     </main>
-
+    <!--Adding the Footer-->
+    {% include "footer.html" %}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -88,5 +99,5 @@
       crossorigin="anonymous"
     ></script>
   </body>
-  {% include "footer.html" %}
+
 </html>

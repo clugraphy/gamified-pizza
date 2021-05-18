@@ -8,13 +8,13 @@
 
 {% block content %}
 
-    <div class="row" style="margin-top: 6%">
+    <div class="row" style="padding-top: 240px;margin-bottom: 160px">
         <h2>Your Shopping Cart
             <span class="badge pull-right" style="color: #66ef5a">
                 {% with total_items=cart|length %}
                     {% if cart|length > 0 %}
                         My Shopping Order:
-                        <a href="{% url "cart:cart_detail" %}" style="color: #66ef5a">
+                        <a href="{% url "cart:cart_detail" %}" style="color: #66ef5a;">
                             {{ total_items }} item {{ total_items|pluralize }}, $ {{ cart.get_total_price }} , {{ cart.get_total_pizzereum }} PZM
                         </a>
                     {% else %}
