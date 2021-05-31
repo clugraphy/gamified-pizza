@@ -29,31 +29,21 @@
    <!--Adding the HealthBar & Cart Info-->
     <div id = "healthBar">  
         <div class="row"> 
-          <div class="col-sm-3">
-            <div>
-                <center><h2>100 <i class="fa fa-heart fa-lg" ></i></h2>
-            </div>
+          <div class="col-sm-6">
+            {% comment %} <h2>100 <i class="fa fa-heart fa-lg" ></i>100<i class="fa fa-money fa-lg" ></i></h2> {% endcomment %}
+
+            <center><a class="nav-link" href="{% url "product_list" %}">
+              <h2>Take me home <i class="fa fa-home fa-lg" ></i></h2></a>
+            <center><h2>Hello {{ request.user.username }} </h2>
           </div>
-          <div class="col-sm-3">
-            <div>
-                <center><h2>100 <i class="fa fa-money fa-lg" ></i></h2>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <a class="nav-link" href="{% url "product_list" %}">
-            <div>
-                <center><h2>Take me home <i class="fa fa-home fa-lg" ></i></h2>
-            </div>
-            </a>
-          </div>
-          </div>
+        </div>
         
     </div>
     <div class="col-sm-3">
         <div class="cart-area">           
             <a href="{% url "cart:cart_detail" %}" class="icons-btn d-inline-block bag">
             <i class="fa fa-shopping-cart fa-lg"></i>
-            <span class="cart-label"> {{ cart|length }} Items {{ cart.get_total_price }} RON  PZM</span>
+            <span class="cart-label"> {{ cart|length }} Items {{ cart.get_total_price }} RON</span>
             </a> 
         </div>
     </div>

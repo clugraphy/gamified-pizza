@@ -8,8 +8,8 @@
 
 {% block content %}
 
-    <div class="row" style="padding-top: 240px;margin-bottom: 160px">
-        <h2>Your Shopping Cart
+    <div class="row" style="padding-top: 240px;padding-left:20px;margin-bottom: 160px">
+        <h2><p class="text-center">Your Shopping Cart</p>
             <span class="badge pull-right" style="color: #66ef5a">
                 {% with total_items=cart|length %}
                     {% if cart|length > 0 %}
@@ -71,7 +71,7 @@
             </tr>
             </tbody>
         </table>
-        <p class="text-right">
+        <p class="text-center">
             <a href="{% url "product_list" %}" class="btn btn-default">Continue Shopping</a>
             <a href="{% url "orders_management:order_create" %}" class="btn btn-primary">Checkout</a>
         </p>

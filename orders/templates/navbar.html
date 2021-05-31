@@ -76,18 +76,6 @@
                 {% if category.slug == c.slug %} {% endif %}>
                 <li><a href="{{ c.get_absolute_url }}" class="aside-anchor">{{ c.name }}</a></li>
             {% endfor %}
-
-             <ul class="navbar-nav mx-auto text-center">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url "product_list" %}">Menu </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url "product_list" %}">Products </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url "product_list" %}">Contact </a>
-                    </li>
-                </ul>
         </ul>
         </div>
  

@@ -11,13 +11,16 @@
 }
 
 
+html {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
 body {
 	font-family: pixel;
+	width: 100%;
 	height:100%;
-	width: 100%; 
-    margin-left:auto; 
-    margin-right: auto; 
-    min-height:100%;
     background-color: #4daefd;
 	overflow-x: hidden;
   
@@ -31,6 +34,7 @@ main {
 	justify-content: center;
 	height: 100%;
 	width: 100%;
+
 	/* margin-top: 20px; */
 
 }
@@ -38,13 +42,11 @@ main {
 
 footer {
 	clear: both;
-	position: static;
-	bottom: 50;
-	width: 100%;
-	height: 200%;
+	position: fixed;
+	bottom: 0;
 	line-height: 180px;
-	background-color: rgb(228, 196, 15);
-	color: chartreuse;
+	background-color: var(--yellow);
+	color: var(--primary);
 	text-align: center;
 	overflow: hidden;
   }
@@ -59,37 +61,18 @@ footer {
 
 #healthBar {
 	width: 100%;
-	background-color: #66ef5a;
+	background-color: var(--green);
 	position: absolute;
-	display: block;
-	color: yellow;
+	display: inline-block;
+	color: var(--primary);
 	padding-left: 60px;
+	padding-top: 60px;
 }
 
 
-h1 {
-  text-align: center;
-}
-
-#rawrow {
-	border: #efea5a;
-	border-width: 10px;
-	border-style: double;
-	z-index: 3;
-
-}
 
 /* Card Styling  */
 
-/* .card {
-	background-color: #10e934;
-	border-radius: 2%;
-	margin-bottom: 10%;
-	min-width: 1400px;
-	max-width: fit-content;
-	width: 100%;
-	height: 100%;
-} */
 
 .card-contets {
 	margin-top: 50px;
@@ -152,25 +135,37 @@ h1 {
   font-weight: normal;
 }
 
+/* Check Out Styling */
+
 
 /* Cart Styling */
+
+.checkout {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	margin-left: 40%;
+
+}
 
 .cart-area {
 	position: fixed;
 	display: inline-block;
 	right: 0;
-	background-color: rgba(238, 170, 25, 0.932);
-	z-index: 1;
+	background-color: var(--yellow);
+	z-index: 30;
 }
 
 .cart-label {
 	font-size: 40px;
-
 }
 
 p label {
-	display: inline-block;
-	position: inherit;
+	display: list-item;
+	position: static;
+	left: 0;
+	background-color: #10e934;
 }
 
 
@@ -184,13 +179,7 @@ form select {
 	
 }
 
-form label {
-	display: inline-block;
-	position: inherit;
-	font-size: 30px;
-	margin-right: 20px;
-	justify-content: center;
-}
+
 
 
 
@@ -420,3 +409,47 @@ form label {
 	}
   }
   
+/* Login Zone CSS */
+
+.login-body {
+	height: 100%;
+	margin: 0;
+	padding: auto;
+	overflow: scroll;
+}
+
+.form-signin {
+	padding-top: 10%;
+	padding-left: 30%;
+	padding-right: 30%;
+}
+
+form label {
+	display: inline-block;
+	position: inherit;
+	font-size: 30px;
+	margin-right: 20px;
+	justify-content: center;
+}
+
+.form-floating label {
+	/* background-color: var(--secondary);
+	display: inline-block; */
+	position: inherit;
+}
+
+#pizza-login {
+	position: absolute;
+	margin-top: -200px;
+	margin-right: 200px;
+	right: 0;
+}
+
+input #id_username {
+	background-color: #10e934;
+	
+}
+
+input label #id_username {
+	background-color: #FF5555;
+} 

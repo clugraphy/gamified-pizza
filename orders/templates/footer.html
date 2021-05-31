@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col">
                 {% if user.is_authenticated %}
-                    <center><a class="nav-item nav-link" style="font-size:40px" href="{% url 'signup' %}">Signup</a>
+                    <center><a class="nav-item nav-link" style="font-size:40px" href="{% url 'login' %}">Login</a>
                 {% endif %}
             </div>          
             <div class="col">
@@ -13,11 +13,11 @@
             </div> 
             <div class="col">
                 {% if user.is_authenticated %}
-                    <center><a class="nav-item nav-link" style="font-size:40px" href="{% url 'signup' %}">Signup</a>
+                    <center><a class="nav-item nav-link" style="font-size:40px" href="{% url 'logout' %}">Logout</a>
                 {% endif %}
             </div> 
         </div> <!--First row-->
-        <div class="row">
+        {% comment %} <div class="row">
             <div class="col">
                 {% if user.is_authenticated %}
                     <center><a class="nav-item nav-link" style="font-size:40px" href="{% url 'login' %}">Login</a>
@@ -50,6 +50,6 @@
                     <center><a class="nav-item nav-link" style="font-size:40px" href="{% url 'logout' %}">Logout</a>
                 {% endif %}
             </div> 
-        </div><!--Third row-->   
+        </div><!--Third row-->    {% endcomment %}
     </div><!--Container-->
 </footer>
