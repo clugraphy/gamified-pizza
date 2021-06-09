@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 from cart.cart import Cart
 from orders_management.forms import OrderCreateForm
-from orders_management.models import OrderItem
+from orders_management.models import Leaderboard, OrderItem
 
 
 def order_create(request):
@@ -20,13 +20,14 @@ def order_create(request):
                     order=order,
                     product=item["product"],
                     price=item["price"],
-                    quantity=item["quantity"]
+                    quantity=item["quantity"],
+                    pizzereum=item["pizzereum"],
                 )
 
             cart.clear()
             return render(request, "orders/order/created.html", {"order": order})
 
-    else:   # GET
+    else:  # GET
         form = OrderCreateForm()
 
     return render(request, "orders/order/create.html", {"form": form})

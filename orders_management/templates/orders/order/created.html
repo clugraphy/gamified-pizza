@@ -1,19 +1,14 @@
-{% extends "layout.html" %}
-
-{% load static %}
-
-{% block title %}
-    Your Shopping Cart | Thank you
-{% endblock %}
-
-{% block content %}
-
-    <div class="row" style="margin-top: 6%">
-        <div class="col-md-8 col-md-offset-2">
-            <h3 class="page-header">Thank You For Shopping With Us
-            </h3>
-            <p>Your order has been successfully completed. Your order number is <strong>{{ order.id }}</strong>.</p>
-        </div>
+{% extends "layout.html" %} {% load static %} {% block title %} Your Shopping
+Cart | Thank you {% endblock %} {% block content %}
+<body>
+  <div>
+    <div style="padding-top:440px">
+      <center><h3>Thank You For Shopping With Us</h3>
+      <center><p>
+        Your order has been successfully completed. Your order number is
+        <strong>{{ order.id }}</strong>. Thank you {{ order.first_name}} your order will arrive at {{ order.address }}
+      </p>
     </div>
-
+  </div>
+</body>
 {% endblock %}

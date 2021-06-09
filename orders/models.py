@@ -52,6 +52,9 @@ class Product(models.Model):
         ordering = ("name",)
         index_together = (("id", "slug"),)
 
+    def __str__(self):
+        return "Product: {}".format(self.name)
+
     def __self__(self):
         return f"({self.id}) {self.name} ${self.price} - {self.category}"
 

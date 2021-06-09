@@ -1,0 +1,37 @@
+{% extends "layout.html" %} {% load static %} {% block content %}
+
+<h2>This is the leaderboard now.</h2>
+{% comment %} <h1>Order : {{ order }}</h1> {% endcomment %}
+<h1>{% for o in order %}
+    Total pizzereum: {{ o.get_total_pizzereum }}
+{%endfor%}
+
+</h1>
+
+<h2>{% for oi in orderItem %}
+   <ul>
+   <strong> {{ oi }}  </strong>
+    <strong> {{ oi.product }}  </strong>
+    <strong>{{ oi.pizzereum }} </strong>
+    <strong>{{ oi.get_pizzereum}} </strong>
+    </ul>
+{%endfor%}
+
+</h2>
+{% comment %} <h1>Order Item: {{ orderItem }}</h1> {% endcomment %}
+<ol>
+{% for leader in leaderboard %}
+
+    <li>
+        <h1>
+            {{leader}}
+        </h1>
+        <h1>
+            {{leader.first_name}}
+        </h1>
+         <h1>
+            {{leader.order}}
+        </h1>
+    </li>
+{%endfor%}</ol> {% endblock %}</h2>
+

@@ -3,11 +3,22 @@ from django.shortcuts import render, get_object_or_404
 
 from cart.forms import CartAddProductForm
 from .models import Category, Product
+from orders_management.models import Leaderboard, Order, OrderItem
 
 
 # Create your views here.
 # def index(request):
 #     return render(request, "product/list.html")  # index
+
+
+def leaderboard(request):
+    leaderboard = Leaderboard.objects.all()
+    order = Order.objects.all()
+    orderItem = OrderItem.objects.all()
+
+    context = {"leaderboard": leaderboard, "order": order, "orderItem": orderItem}
+
+    return render(request, "leaderboard/leaderboard.html", context)
 
 
 def product_list(request, category_slug=None):
@@ -19,17 +30,13 @@ def product_list(request, category_slug=None):
         category = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=category)
 
-    context = {
-        "category": category,
-        "categories": categories,
-        "products": products
-    }
+    context = {"category": category, "categories": categories, "products": products}
 
     return render(request, "product/list.html", context)
 
 
 def product_detail(request, id, slug):
-    product = get_object_or_404(Product, id=id, slug=slug, available=True)
+    product = get_object_or_404(Product, slug=slug, id=id, available=True)
     cart_product_form = CartAddProductForm()
 
     context = {
@@ -49,7 +56,10 @@ def signup_view(request):
         user = User.objects.create_user(email, password)
         user.save()
 
-    return render(request, "registration/signup.html", {"message": "Create new account"})
+    return render(
+        request, "registration/signup.html", {"message": "Create new account"}
+    )
+
 
 # def login_view(request):
 #     username = request.POST["username"]

@@ -7,7 +7,9 @@ from orders.models import Product
 
 class Cart(object):
     def __init__(self, request):
-        self.session = request.session  # makes sure that the cart is available for other methods in the class
+        self.session = (
+            request.session
+        )  # makes sure that the cart is available for other methods in the class
         cart = self.session.get(settings.CART_SESSION_ID)
 
         if not cart:
@@ -22,7 +24,7 @@ class Cart(object):
             self.cart[product_id] = {
                 "quantity": 0,
                 "price": str(product.price),
-                "pizzereum": str(product.pizzereum)
+                "pizzereum": str(product.pizzereum),
             }
 
         if update_quantity:
@@ -53,9 +55,6 @@ class Cart(object):
         for item in self.cart.values():
             item["price"] = Decimal(item["price"])
             item["total_price"] = item["price"] * item["quantity"]
-            yield item
-
-        for item in self.cart.values():
             item["pizzereum"] = Decimal(item["pizzereum"])
             item["total_pizzereum"] = item["pizzereum"] * item["quantity"]
             yield item
@@ -64,10 +63,15 @@ class Cart(object):
         return sum(item["quantity"] for item in self.cart.values())
 
     def get_total_pizzereum(self):
-        return sum(Decimal(item["quantity"]) * item["pizzereum"] for item in self.cart.values())
+        return sum(
+            Decimal(item["quantity"]) * Decimal(item["pizzereum"])
+            for item in self.cart.values()
+        )
 
     def get_total_price(self):
-        return sum(Decimal(item["price"]) * item["quantity"] for item in self.cart.values())
+        return sum(
+            Decimal(item["price"]) * item["quantity"] for item in self.cart.values()
+        )
 
     # def total_pizzereum(self):
     #     return sum(Decimal(item["pizzereum"]) * item["quantity"] for item in self.cart.values())

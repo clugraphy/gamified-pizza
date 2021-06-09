@@ -1,19 +1,36 @@
 from django.contrib import admin
 
 # Register your models here.
-from orders_management.models import Order, OrderItem
+from orders_management.models import Order, OrderItem, Leaderboard
 
 
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
-    raw_id_fields = ['product']
+    raw_id_fields = ["product"]
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['id', 'first_name', 'last_name', 'email', 'address', 'postal_code', 'city', 'paid', 'created',
-                    'updated']
-    list_filter = ['paid', 'created', 'updated']
+    list_display = [
+        "id",
+        "first_name",
+        "last_name",
+        "email",
+        "address",
+        "postal_code",
+        "city",
+        "paid",
+        "created",
+        "updated",
+    ]
+    list_filter = ["paid", "created", "updated"]
     inlines = [OrderItemInline]
 
 
+class LeaderboardAdmin(admin.ModelAdmin):
+    list_display = ["first_name", "last_name", "order"]
+
+    list_filter = ["order"]
+
+
+admin.site.register(Leaderboard, LeaderboardAdmin)
 admin.site.register(Order, OrderAdmin)

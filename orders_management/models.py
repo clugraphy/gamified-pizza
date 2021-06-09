@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields.related import ForeignKey, OneToOneField
 
 # Create your models here.
 from orders.models import Product
@@ -19,7 +20,7 @@ class Order(models.Model):
         ordering = ("-created",)
 
     def __str__(self):
-        return "Order {}".format(self.id)
+        return self.first_name + " " + self.last_name
 
     def get_total_cost(self):
         return sum(item.get_cost() for item in self.items.all())
@@ -34,11 +35,11 @@ class OrderItem(models.Model):
         Product, related_name="order_items", on_delete=models.CASCADE
     )
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    pizzereum = models.DecimalField(max_digits=10, decimal_places=2, default=50)
+    pizzereum = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
-        return "{}".format(self.id)
+        return "OrderItem: {}".format(self.pk)
 
     def get_cost(self):
         return self.price * self.quantity
@@ -48,13 +49,34 @@ class OrderItem(models.Model):
 
 
 class Leaderboard(models.Model):
-    first_name = models.ForeignKey(
-        Order, related_name="first", on_delete=models.CASCADE
+    first_name = ForeignKey(
+        Order,
+        blank=True,
+        null=True,
+        related_name="userFirstID",
+        on_delete=models.CASCADE,
     )
-    last_name = models.ForeignKey(Order, related_name="last", on_delete=models.CASCADE)
-    pizzereum = models.ForeignKey(
-        Product, related_name="products", on_delete=models.CASCADE
+    last_name = ForeignKey(
+        Order,
+        blank=True,
+        null=True,
+        related_name="userLastID",
+        on_delete=models.CASCADE,
+    )
+    order = ForeignKey(
+        OrderItem,
+        blank=True,
+        null=True,
+        related_name="orderID",
+        on_delete=models.CASCADE,
+    )
+    pizzereum = ForeignKey(
+        OrderItem,
+        blank=True,
+        null=True,
+        related_name="pizzereums",
+        on_delete=models.CASCADE,
     )
 
-    def get_leaderboard(self):
-        return self.first_name + self.last_name + self.pizzereum
+    def __str__(self):
+        return "Leaderboard: {} {}".format(self.pizzereum, self.first_name)
