@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from orders_management.models import Order, OrderItem, Leaderboard
+from orders_management.models import Order, OrderItem
 
 
 class OrderItemInline(admin.TabularInline):
@@ -32,5 +32,4 @@ class LeaderboardAdmin(admin.ModelAdmin):
     list_filter = ["order"]
 
 
-admin.site.register(Leaderboard, LeaderboardAdmin)
 admin.site.register(Order, OrderAdmin)

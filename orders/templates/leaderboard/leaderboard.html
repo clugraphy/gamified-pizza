@@ -1,37 +1,52 @@
 {% extends "layout.html" %} {% load static %} {% block content %}
+<div class="container">
+  <h1 style="padding-top: 200px">This is the leaderboard now.</h1>
 
-<h2>This is the leaderboard now.</h2>
-{% comment %} <h1>Order : {{ order }}</h1> {% endcomment %}
-<h1>{% for o in order %}
-    Total pizzereum: {{ o.get_total_pizzereum }}
-{%endfor%}
+  {% comment %}
+  <h1>Order : {{ order }}</h1>
+  {% endcomment %}
+  <div class="container" style="padding-top: 200px">
+    <h1>
+      <ol>
+        {% for o in order %}
+        <li>User: {{ o.nickname }} Total pizzereum:</li>
+        {% if o.first_name == "Alexandru" %}
+        <p>DA</p>
+        <p>{{ o.get_total_pizzereum }}</p>
+        {% endif %} {%endfor%}
+      </ol>
+    </h1>
+  </div>
+  {% comment %}
+  <h1>Last pizza eat is : <strong>{{ filter }}</strong></h1>
+  {% endcomment %} {% for filter1tem in filter %}
+  <h1>New: <strong>{{ filter1tem }}</strong></h1>
 
-</h1>
-
-<h2>{% for oi in orderItem %}
-   <ul>
-   <strong> {{ oi }}  </strong>
-    <strong> {{ oi.product }}  </strong>
-    <strong>{{ oi.pizzereum }} </strong>
-    <strong>{{ oi.get_pizzereum}} </strong>
+  {%endfor%}
+  <h2>
+    {% for oi in orderItem %}
+    <ul>
+      <li><strong>{{ oi }}</strong></li>
+      <li><strong>{{ oi.product }}</strong></li>
+      <li><strong>{{ oi.pizzereum }}</strong></li>
+      <li><strong>{{ oi.get_pizzereum}}</strong></li>
     </ul>
-{%endfor%}
-
-</h2>
-{% comment %} <h1>Order Item: {{ orderItem }}</h1> {% endcomment %}
+    {%endfor%}
+  </h2>
+</div>
+{% comment %}
+<h1>Order Item: {{ orderItem }}</h1>
+{% endcomment %} {% comment %}
 <ol>
-{% for leader in leaderboard %}
+  {% for leader in leaderboard %}
 
-    <li>
-        <h1>
-            {{leader}}
-        </h1>
-        <h1>
-            {{leader.first_name}}
-        </h1>
-         <h1>
-            {{leader.order}}
-        </h1>
-    </li>
-{%endfor%}</ol> {% endblock %}</h2>
-
+  <li>
+    <h1>{{leader}}</h1>
+    <h1>{{leader.first_name}}</h1>
+    <h1>{{leader.order}}</h1>
+  </li>
+  {%endfor%}
+</ol>
+{% endcomment %} {% comment %}
+<h1>TEST {{ leader_pizzereum }}</h1>
+{% endcomment %} {% endblock %}

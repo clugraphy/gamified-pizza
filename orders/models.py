@@ -23,10 +23,6 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    # SIZE_CHOICES = {
-    #     ("small", "Small"),
-    #     ("large", "Large")
-    # }
 
     category = models.ForeignKey(
         Category, related_name="products", on_delete=models.CASCADE
@@ -34,7 +30,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, db_index=True)
     description = models.TextField(blank=True)
-    # size = models.CharField(max_length=10, choices=SIZE_CHOICES)
+
     price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     pizzereum = models.DecimalField(
         max_digits=10, decimal_places=2, null=True, blank=True

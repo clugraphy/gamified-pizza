@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.fields.related import ForeignKey, OneToOneField
+from django.contrib.auth.models import User
 
 # Create your models here.
 from orders.models import Product
@@ -8,6 +9,7 @@ from orders.models import Product
 class Order(models.Model):
     first_name = models.CharField(max_length=60)
     last_name = models.CharField(max_length=60)
+    nickname = models.CharField(max_length=40)
     email = models.EmailField()
     address = models.CharField(max_length=150)
     postal_code = models.CharField(max_length=30)
@@ -17,7 +19,7 @@ class Order(models.Model):
     paid = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ("-created",)
+        ordering = ("-created", "first_name", "last_name")
 
     def __str__(self):
         return self.first_name + " " + self.last_name
@@ -39,7 +41,7 @@ class OrderItem(models.Model):
     quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
-        return "OrderItem: {}".format(self.pk)
+        return "OrderItem: {} pizzereum: {}".format(self.pk, self.pizzereum)
 
     def get_cost(self):
         return self.price * self.quantity
@@ -76,6 +78,9 @@ class Leaderboard(models.Model):
         null=True,
         related_name="pizzereums",
         on_delete=models.CASCADE,
+    )
+    quantity = OneToOneField(
+        OrderItem, auto_created=True, default="", on_delete=models.CASCADE
     )
 
     def __str__(self):

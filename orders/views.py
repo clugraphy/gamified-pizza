@@ -1,24 +1,34 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
+from django.contrib.auth import authenticate, login, logout
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 from cart.forms import CartAddProductForm
 from .models import Category, Product
 from orders_management.models import Leaderboard, Order, OrderItem
 
 
-# Create your views here.
-# def index(request):
-#     return render(request, "product/list.html")  # index
+# @login_required
+# def leaderboard(request):
+#     leaderboard = Leaderboard.objects.all()
+#     order = Order.objects.all()
+#     orderItem = OrderItem.objects.all()
+#     filter = Order.objects.all()
+#     filter2 = OrderItem.objects.filter(pizzereum="50")
+#     filter1 = Order.objects.order_by("last_name", "email")
 
 
-def leaderboard(request):
-    leaderboard = Leaderboard.objects.all()
-    order = Order.objects.all()
-    orderItem = OrderItem.objects.all()
+#     context = {
+#         "leaderboard": leaderboard,
+#         "order": order,
+#         "orderItem": orderItem,
+#         "filter": filter,
+#         "filter1": filter1,
+#         "filter2": filter2,
+#     }
 
-    context = {"leaderboard": leaderboard, "order": order, "orderItem": orderItem}
-
-    return render(request, "leaderboard/leaderboard.html", context)
+#     return render(request, "leaderboard/leaderboard.html", context)
 
 
 def product_list(request, category_slug=None):
@@ -61,18 +71,20 @@ def signup_view(request):
     )
 
 
-# def login_view(request):
-#     username = request.POST["username"]
-#     password = request.POST["password"]
-#     user = authenticate(request, username=username, password=password)
-#
-#     if user is not None:
-#         login(request, user)
-#         return HttpResponseRedirect(reverse("index"))
-#     else:
-#         return render(request, "registration/login.html", {"message": "Invalid credentials."})
-#
-#
-# def logout_view(request):
-#     logout(request)
-#     return render(request, "registration/login.html", {"message": "Logged out."})
+def login_view(request):
+    username = request.POST["username"]
+    password = request.POST["password"]
+    user = authenticate(request, username=username, password=password)
+
+    if user is not None:
+        login(request, user)
+        return HttpResponseRedirect(reverse("product_list"))
+    else:
+        return render(
+            request, "registration/login.html", {"message": "Invalid credentials."}
+        )
+
+
+def logout_view(request):
+    logout(request)
+    return render(request, "registration/login.html", {"message": "Logged out."})

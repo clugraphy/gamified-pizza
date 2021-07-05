@@ -29,16 +29,17 @@
    <!--Adding the HealthBar & Cart Info-->
     <div id = "healthBar">  
         <div class="row"> 
-          <div class="col-sm-6">
-            {% comment %} <h2>100 <i class="fa fa-heart fa-lg" ></i>100<i class="fa fa-money fa-lg" ></i></h2> {% endcomment %}
-
+          <div class="col-sm-12">
             <center><a class="nav-link" href="{% url "product_list" %}">
-              <h2>Take me home <i class="fa fa-home fa-lg" ></i></h2></a>
+              <h2>Home<i class="fa fa-home fa-lg" ></i></h2></a>
+               {% comment %} <center><a class="nav-link" href="{% url "leaderboard" %}">
+              <h2>Leaderboard <i class="fa fa-make_list fa-lg" ></i></h2></a> {% endcomment %}
             <center><h2>Hello {{ request.user.username }} </h2>
           </div>
         </div>
         
     </div>
+    <!--Adding the Cart Area-->
     <div class="col-sm-3">
         <div class="cart-area">           
             <a href="{% url "cart:cart_detail" %}" class="icons-btn d-inline-block bag">
